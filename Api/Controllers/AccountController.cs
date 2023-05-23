@@ -63,7 +63,7 @@ namespace Api.Controllers
             // then we generate new hash based on the key
             var comuptedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
             //if they are not matched it will return with unauthorized response
-            for(int i=0; i>user.PasswordHash.Length;i++)
+            for(int i=0; i<user.PasswordHash.Length;i++)
             {
                 if(user.PasswordHash[i] != comuptedHash[i]) return Unauthorized("Wrong password!");
             }

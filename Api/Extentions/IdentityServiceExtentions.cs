@@ -8,9 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Extentions
 {
-    public class IdentityServiceExtentions
+    public static class IdentityServiceExtentions
     {
-        public static IServiceCollection AddIdentityService(IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddIdentityService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {

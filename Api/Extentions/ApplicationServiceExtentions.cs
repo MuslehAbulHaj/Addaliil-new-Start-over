@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Api.Data;
 using Api.Entities.Interfaces;
 using Api.Entities.Repo;
@@ -11,7 +7,7 @@ namespace Api.Extentions
 {
     public static class ApplicationServiceExtentions
     {
-        public static IServiceCollection AddApplicationServices(IServiceCollection services,
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
                          IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(opt =>
