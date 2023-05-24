@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,16 +11,15 @@ import { AccountService } from '../_services/account.service';
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService,private router: Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
   }
 
   register(){
     this.accountService.register(this.model).subscribe({
-      next: ()=> {},
-      error: error=> console.log(error)
-      
+      next: _ => this.router.navigateByUrl('/members'), //this makes the user goes to members page after login success
+      error: error => this.toastr.error(error.error)      
     })
   }
 
