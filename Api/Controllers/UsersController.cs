@@ -1,5 +1,8 @@
 using Api.Data;
+using Api.Entities.DTOs;
+using Api.Entities.Interfaces;
 using Api.Entities.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,23 +12,31 @@ namespace Api.Controllers
     [Authorize]
     public class UsersController : BaseApiController
     {
-        private readonly AppDbContext _context;
-        public UsersController(AppDbContext context)
+        private readonly IUserRepo _user;
+        private readonly IMapper _mapper;
+        public UsersController(IUserRepo user, IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
+            _user = user;
             
         }
         [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return Ok(await _user.GetMembersAsync());
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUser(Guid id)
+        [HttpGet("GetUserById/{id}")]
+        public async Task<ActionResult<MemberDto>> GetUser(Guid id)
         {
-            return await _context.Users.FindAsync(id);
+            return await _user.GetMemberByIdAsync(id);
+        }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<MemberDto>> GetUserById(string username)
+        {
+            return await _user.GetMemberByNameAsync(username);
         }
     }
 }

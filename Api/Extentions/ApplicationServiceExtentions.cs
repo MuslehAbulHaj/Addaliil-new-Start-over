@@ -14,6 +14,8 @@ namespace Api.Extentions
              opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             return services;
         }

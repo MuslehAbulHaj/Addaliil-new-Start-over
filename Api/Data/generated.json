@@ -1,0 +1,202 @@
+[
+  {
+    "UserName": "Mccarty",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Fuentes",
+        "DateOfBirth": "1953-05-08",
+        "DateCreated": "2019-03-24",
+        "DateLastActive": "2021-07-01",
+        "Gender": 1,
+        "City": "Elliott",
+        "Country": "Korea (North)"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/50.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Buck",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Copeland",
+        "DateOfBirth": "1959-09-22",
+        "DateCreated": "2019-01-24",
+        "DateLastActive": "2023-04-29",
+        "Gender": 1,
+        "City": "Alleghenyville",
+        "Country": "Andorra"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/15.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Cooper",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Rivers",
+        "DateOfBirth": "1961-10-19",
+        "DateCreated": "2019-12-23",
+        "DateLastActive": "2021-01-27",
+        "Gender": 1,
+        "City": "Dahlen",
+        "Country": "Sao Tome and Principe"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/67.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Perez",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Salas",
+        "DateOfBirth": "1999-05-12",
+        "DateCreated": "2020-05-04",
+        "DateLastActive": "2023-04-19",
+        "Gender": 1,
+        "City": "Kimmell",
+        "Country": "Poland"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/7.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Keith",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Carter",
+        "DateOfBirth": "1975-12-06",
+        "DateCreated": "2020-01-22",
+        "DateLastActive": "2021-06-12",
+        "Gender": 1,
+        "City": "Marion",
+        "Country": "Latvia"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/31.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Rebekah",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Tania",
+        "DateOfBirth": "1987-12-03",
+        "DateCreated": "2019-01-18",
+        "DateLastActive": "2021-10-31",
+        "Gender": 2,
+        "City": "Shawmut",
+        "Country": "Tuvalu"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/women/9.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Melva",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Latonya",
+        "DateOfBirth": "1997-07-04",
+        "DateCreated": "2019-12-26",
+        "DateLastActive": "2021-04-07",
+        "Gender": 2,
+        "City": "Grapeview",
+        "Country": "Namibia"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/women/64.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Diann",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Brigitte",
+        "DateOfBirth": "1951-09-24",
+        "DateCreated": "2019-03-13",
+        "DateLastActive": "2023-04-08",
+        "Gender": 2,
+        "City": "Fidelis",
+        "Country": "New Caledonia"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/women/40.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Imelda",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Shana",
+        "DateOfBirth": "1986-06-28",
+        "DateCreated": "2019-06-14",
+        "DateLastActive": "2021-10-27",
+        "Gender": 2,
+        "City": "Tolu",
+        "Country": "Sudan"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/women/43.jpg",
+        "isMain": true
+      }
+    ]
+  },
+  {
+    "UserName": "Terra",
+    "AppUserDetail": [
+      {
+        "DisplayName": "Rhea",
+        "DateOfBirth": "1999-12-16",
+        "DateCreated": "2020-01-27",
+        "DateLastActive": "2022-11-30",
+        "Gender": 2,
+        "City": "Osmond",
+        "Country": "Belarus"
+      }
+    ],
+    "ProfilePhoto": [
+      {
+        "url": "https://randomuser.me/api/portraits/women/36.jpg",
+        "isMain": true
+      }
+    ]
+  }
+]
