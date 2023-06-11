@@ -20,18 +20,17 @@ namespace Api.Controllers
             _user = user;
             
         }
-        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
             return Ok(await _user.GetMembersAsync());
         }
 
-        [HttpGet("GetUserById/{id}")]
-        public async Task<ActionResult<MemberDto>> GetUser(Guid id)
-        {
-            return await _user.GetMemberByIdAsync(id);
-        }
+        // [HttpGet("GetUserById/{id}")]
+        // public async Task<ActionResult<MemberDto>> GetUser(Guid id)
+        // {
+        //     return await _user.GetMemberByIdAsync(id);
+        // }
 
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUserById(string username)
