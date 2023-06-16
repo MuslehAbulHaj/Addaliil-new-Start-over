@@ -23,14 +23,14 @@ export class AccountService {
         const user = response;
         if(user){
           //here we are storing the user & token in LocalStorage
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          this.setCurrentUser(user);          
         }
       })
     );
   }
   
   setCurrentUser(user: User){
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 
@@ -45,8 +45,7 @@ export class AccountService {
     map(user=>{
       if(user){
         //here we are storing the user & token in LocalStorage
-        localStorage.setItem('user', JSON.stringify(user));
-        this.currentUserSource.next(user);
+        this.setCurrentUser(user);
       }
       return user;
     })

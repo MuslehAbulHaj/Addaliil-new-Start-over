@@ -45,7 +45,8 @@ namespace Api.Controllers
             return new UserDto()
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(p=>p.IsMain == true).PublicId
             };
         }
 
@@ -54,7 +55,9 @@ namespace Api.Controllers
         {
             //this function is only checking the username & password are matched 
             //based on what we stored in Db as hased password
-            var user = await _context.Users.SingleOrDefaultAsync(x=>x.UserName == loginDto.UserName);
+            var user = await _context.Users
+                .Include(p=> p.Photos)
+                .SingleOrDefaultAsync(x=>x.UserName == loginDto.UserName);
             
             if( user == null) return Unauthorized("User name is not found");
 
@@ -67,10 +70,13 @@ namespace Api.Controllers
             {
                 if(user.PasswordHash[i] != comuptedHash[i]) return Unauthorized("Wrong password!");
             }
+            string x = user.Photos.FirstOrDefault(p=>p.IsMain == true).Url;
+
             return new UserDto()
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(p=>p.IsMain == true).Url
             };
         }
 
