@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./photo-editor.component.css']
 })
 export class PhotoEditorComponent implements OnInit {
-  @Input() member:Member | undefined;
+  @Input() member: Member | undefined;
   uploader: FileUploader | undefined;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
@@ -26,24 +26,24 @@ export class PhotoEditorComponent implements OnInit {
         if (user) this.user = user
       }
     })
-   }
+  }
 
   ngOnInit(): void {
     this.initialzeUploader();
   }
 
   fileOverBase(e: any) {
-    this.hasBaseDropZoneOver =e;
+    this.hasBaseDropZoneOver = e;
   }
 
   setMainPhoto(photo: Photo) {
     this.memberService.setMainPhoto(photo.id).subscribe({
       next: () => {
-        if(this.user && this.member) {
+        if (this.user && this.member) {
           this.user.photoUrl = photo.url;
           this.accountService.setCurrentUser(this.user);
           this.member.photoUrl = photo.url;
-          this.member.photos.forEach(p=> {
+          this.member.photos.forEach(p => {
             if (p.isMain) p.isMain = false;
             if (p.id === photo.id) p.isMain = true;
           })
@@ -61,9 +61,9 @@ export class PhotoEditorComponent implements OnInit {
     })
   }
 
-  initialzeUploader(){
+  initialzeUploader() {
     this.uploader = new FileUploader({
-      url :this.baseUrl + 'users/add-photo',
+      url: this.baseUrl + 'users/add-photo',
       authToken: 'Bearer ' + this.user?.token,
       isHTML5: true,
       allowedFileType: ['image'],
@@ -71,20 +71,28 @@ export class PhotoEditorComponent implements OnInit {
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
     });
-    
+
     this.uploader.onAfterAddingAll = (file) => {
-      file.withCredentials = false
+      file.withCredentials = true
     };
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
+      // if (response) {
+      //   const photo = JSON.parse(response);
+      //   this.member?.photos.push(photo);
+      // }
       if (response) {
         const photo = JSON.parse(response);
         this.member?.photos.push(photo);
+        if (photo.isMain && this.user && this.member) {
+          this.user.photoUrl = photo.url;
+          this.member.photoUrl = photo.url;
+          this.accountService.setCurrentUser(this.user);
+        }
       }
+
     }
 
-
-    
   }
-  
+
 }

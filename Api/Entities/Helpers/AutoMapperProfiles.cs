@@ -17,10 +17,12 @@ namespace Api.Entities.Helpers
                     //also in same case of Age because age in membeDto is int & the dateofbirth is datetime ,
                     //we need to tell automapper how to get the age value using static function 
                     //and store it in Age
-                    .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalcuateAge()));
+                    
+                .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalcuateAge()));
             CreateMap<Photo, PhotoDto>();
 
             CreateMap<MemberUpdateDto, AppUser>();
+            CreateMap<RegisterDto, AppUser>();
         }
     }
 }

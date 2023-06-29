@@ -2,11 +2,15 @@ namespace Api.Extentions
 {
     public static class DateConverterExtentions
     {
-        public static long DateToNumber(DateTime date)
+        public static int CalcuateAge(this DateTime dob)
         {
-            DateTimeOffset dto = new DateTimeOffset(Convert.ToDateTime(date));
-            long numberDate = dto.ToUnixTimeSeconds();
-            return numberDate;
+            var today = DateTime.UtcNow;
+
+            var age = today.Year - dob.Year;
+
+            if (dob > today.AddYears(-age)) age--;
+
+            return age;
         }
     }
 }
