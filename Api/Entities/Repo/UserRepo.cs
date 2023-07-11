@@ -1,5 +1,6 @@
 using Api.Data;
 using Api.Entities.DTOs;
+using Api.Entities.Helpers;
 using Api.Entities.Interfaces;
 using Api.Entities.Models;
 using AutoMapper;
@@ -35,11 +36,12 @@ namespace Api.Entities.Repo
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<MemberDto>> GetMembersAsync()
+        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParms userParms)
         {
-            return await _context.Users
+            var query = _context.Users
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .ToListAsync();
+                .AsNoTracking();
+                return await PagedList<MemberDto>.createAsync(query, userParms.PageNumber, userParms.PageSize);
         }
 
         public async Task<AppUser> GetUserByIdAsync(Guid id)

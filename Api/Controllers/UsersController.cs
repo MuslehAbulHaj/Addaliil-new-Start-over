@@ -1,4 +1,5 @@
 using Api.Entities.DTOs;
+using Api.Entities.Helpers;
 using Api.Entities.Interfaces;
 using Api.Entities.Models;
 using Api.Extentions;
@@ -22,9 +23,12 @@ namespace Api.Controllers
 
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParms userParms)
         {
-            return Ok(await _user.GetMembersAsync());
+            var users = await _user.GetMembersAsync(userParms);
+            Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize
+                , users.TotalCount, users.TatolPages));
+            return Ok(users);
         }
 
         // [HttpGet("GetUserById/{id}")]

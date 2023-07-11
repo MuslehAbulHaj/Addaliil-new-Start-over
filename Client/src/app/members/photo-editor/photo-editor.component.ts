@@ -23,8 +23,13 @@ export class PhotoEditorComponent implements OnInit {
   constructor(private accountService: AccountService, private memberService: MembersService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => {
-        if (user) this.user = user
+        if (!user) 
+        console.log('error in user')
+        else {
+        this.user = user;
+        console.log(user);
       }
+    }
     })
   }
 
@@ -73,7 +78,7 @@ export class PhotoEditorComponent implements OnInit {
     });
 
     this.uploader.onAfterAddingAll = (file) => {
-      file.withCredentials = true
+      file.withCredentials = false
     };
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
