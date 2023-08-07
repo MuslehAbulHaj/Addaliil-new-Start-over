@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
+    //[ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     public class UsersController : BaseApiController
     {
@@ -25,6 +26,14 @@ namespace Api.Controllers
         [HttpGet]
         public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParms userParms)
         {
+            var currentUsername = await _user.GetMemberByNameAsync(User.GetUserName());
+            userParms.CurrentUsername = currentUsername.UserName;
+
+            if(string.IsNullOrEmpty(userParms.Gender))
+            {
+                userParms.Gender = currentUsername.Gender == "male"? "female":"male";
+            }
+
             var users = await _user.GetMembersAsync(userParms);
             Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize
                 , users.TotalCount, users.TatolPages));
